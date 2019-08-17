@@ -1,0 +1,33 @@
+pattern: Classification
+batchsize: 16
+epoch: 200
+iteration_decay_start: 0
+display_interval: 1
+progressbar_interval: 10
+snapshot_interval: 1
+val_interval: 1
+train_val_split_ratio: 0.9
+main: trainer/supervised.py
+
+models:
+  classifier:
+    func: model/wide_resnet.py
+    name: WRN_40_10
+    args:
+      class_labels: 100
+
+dataset:
+  dataset_func: data/cifar.py
+  dataset_name: CIFAR100
+  args:
+    test: False
+
+optimizer:
+  algorithm: NesterovAG
+  args:
+    lr: 0.1
+    momentum: 0.9
+    
+updater:
+  func: updater/classification.py
+  name: ClassifierUpdater
