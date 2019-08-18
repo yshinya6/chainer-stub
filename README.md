@@ -1,5 +1,5 @@
 # chainer-stub
-A simple stub for [chainer](https://github.com/chainer/chainer) project.
+A simple stub for [chainer](https://github.com/chainer/chainer) projects.
 
 ## How to use
 * Running experiments (train + test)
