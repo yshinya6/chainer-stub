@@ -60,7 +60,8 @@ def train(config_path, result_dir):
     # Setup the training
     iteration = config.expr_itr
     main_script = config.main
-    train_cmd = ['mpiexec', '--allow-run-as-root', '-n', '8', 'python', main_script, '--config_path', config_path]
+    gpu_num = config.gpu_num
+    train_cmd = ['mpiexec', '--allow-run-as-root', '-n', gpu_num, 'python', main_script, '--config_path', config_path]
 
     logger.info("Start Training: {} for {} iterations".format(pattern, iteration))
     for i, seed in enumerate(SEED[:iteration]):
@@ -109,7 +110,8 @@ def expr(config_path, result_dir):
     # Setup the training
     iteration = config.expr_itr
     main_script = config.main
-    train_cmd = ['mpiexec', '--allow-run-as-root', '-n', '8', 'python', main_script, '--config_path', config_path]
+    gpu_num = config.gpu_num
+    train_cmd = ['mpiexec', '--allow-run-as-root', '-n', gpu_num, 'python', main_script, '--config_path', config_path]
     test_cmd = ['python', main_script.replace('trainer','tester'), '--config_path', config_path]
 
     fail_flag = False

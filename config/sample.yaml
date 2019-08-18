@@ -1,5 +1,6 @@
 pattern: Classification
 batchsize: 16
+gpu_num: 8
 epoch: 200
 iteration_decay_start: 0
 display_interval: 1
